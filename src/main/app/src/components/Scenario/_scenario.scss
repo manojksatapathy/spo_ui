@@ -1,0 +1,32 @@
+.scenario-page__r1 {
+    padding-top: $spacing-05;
+    padding-bottom: $spacing-05;
+}
+.downloadIcon {
+    width: 28px;
+    height: 28px;
+    background-image: url("./image/download.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.viewIcon {
+    width: 28px;
+    height: 28px;
+    background-image: url("./image/eye-icon.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.setActiveIcon {
+    width: 28px;
+    height: 28px;
+    background-image: url("./image/set-active.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.deleteIcon {
+    width: 28px;
+    height: 28px;
+    background-image: url("./image/delete.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}

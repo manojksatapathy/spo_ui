@@ -1,0 +1,9 @@
+@import "carbon-addons-iot-react/lib/scss/globals/_vars";
+@import "carbon-addons-iot-react/lib/scss/globals/_colors";
+@import "carbon-addons-iot-react/lib/scss/globals/_theme";
+@import "carbon-addons-iot-react/lib/scss/globals/_typography";
+
+
+@import './components/SPOHeader/_spo-header.scss';
+@import './components/Scenario/_scenario.scss';
+@import './content/LandingPage/landing-page.scss';
