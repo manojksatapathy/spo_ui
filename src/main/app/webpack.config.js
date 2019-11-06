@@ -21,7 +21,7 @@ module.exports = {
         port: 3333,
         proxy: {
             "/ibm/spo/api/v1/*" :{
-                target: "https://localhost:9444/",
+                target: "https://localhost:9443/",
                 //target: "https://SPOAPI:9443/",
                 secure: false,
                 changeOrigin: true
