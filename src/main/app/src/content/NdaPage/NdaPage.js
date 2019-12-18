@@ -1,4 +1,6 @@
 import React from 'react';
+import Nda from '../../components/Nda';
+
 import {
     Button
   } from 'carbon-components-react';
@@ -6,8 +8,7 @@ import {
 const NdaPage = ({goBack}) => {
     return (
         <div>
-            <div>Development is in progress</div>
-            
+            <Nda />
             <Button
                 className="back"
                 disabled={false}

@@ -32,7 +32,7 @@ import axios from 'axios';
     },
     {
       key: 'temporalHorizon',
-      header: 'Temporal Horizon',
+      header: 'TEMPORAL HORIZON',
     },
     {
       key: 'createdDate',
@@ -93,11 +93,17 @@ import axios from 'axios';
         //LoadingIndicator({show: false});
       }).catch(error => {
         console.log(error);
-        //return ["No data"];
+        return (
+          <DataTableSkeleton
+            columnCount={headers.length + 1}
+            rowCount={10}
+            headers={headers}
+          />
+        );
       });
   };
   
-  const ScenarioList1 = data => {
+  const ScenarioList = data => {
     console.log(data);
     if(data.length === 0){
       return (
@@ -113,94 +119,49 @@ import axios from 'axios';
       const [firstRowIndex, setFirstRowIndex] = useState(0);
       const [currentPageSize, setCurrentPageSize] = useState(10);
       const { totalCount, nodes } = ScenarioConstant;  
-      //setTotalItems(totalCount);
-      //const rows = getScenarioRowItems(nodes);
-      //const rows = getAllScenarios();
-      //getAllScenarios().then(rows =>{
-        const rows = data;
-        console.log(rows);
-        return (
-          <div className="bx--grid bx--grid--full-width bx--grid--no-gutter scenario-page">
-            <div className="bx--row scenario-page__r1">
-                <div className="bx--col-lg-16">  
-                  <>
-                  <ScenarioTable
-                      headers={headers}
-                      rows={rows.slice(
-                      firstRowIndex,
-                      firstRowIndex + currentPageSize
-                      )}
-                  />
-                  <Pagination
-                    //totalItems={totalItems}
-                    totalItems={totalCount}
-                    backwardText="Previous page"
-                    forwardText="Next page"
-                    pageSize={currentPageSize}
-                    pageSizes={[5, 10, 15, 25]}
-                    itemsPerPageText="Items per page"
-                    onChange={({ page, pageSize }) => {
-                      if (pageSize !== currentPageSize) {
-                        setCurrentPageSize(pageSize);
-                      }
-                      setFirstRowIndex(pageSize * (page - 1));
-                    }}
-                  />
-                  </>
-              </div>
+      const rows = data;
+      console.log(rows);
+      return (
+        <div className="bx--grid bx--grid--full-width bx--grid--no-gutter scenario-page">
+          <div className="bx--row scenario-page__r1">
+              <div className="bx--col-lg-16">  
+                <>
+                <ScenarioTable
+                    headers={headers}
+                    rows={rows.slice(
+                    firstRowIndex,
+                    firstRowIndex + currentPageSize
+                    )}
+                />
+                <Pagination
+                  //totalItems={totalItems}
+                  totalItems={totalCount}
+                  backwardText="Previous page"
+                  forwardText="Next page"
+                  pageSize={currentPageSize}
+                  pageSizes={[5, 10, 15, 25]}
+                  itemsPerPageText="Items per page"
+                  onChange={({ page, pageSize }) => {
+                    if (pageSize !== currentPageSize) {
+                      setCurrentPageSize(pageSize);
+                    }
+                    setFirstRowIndex(pageSize * (page - 1));
+                  }}
+                />
+                </>
             </div>
           </div>
-        );
-      //});
-      //return (<div>Nothing...</div>);
+        </div>
+      );
     }
     return <WithStateComponent />;
   }
-  const ScenarioList = data => {
-    LoadingIndicator({show: true});
-    getAllScenarios();
-    const [totalItems, setTotalItems] = useState(0);
-    const [firstRowIndex, setFirstRowIndex] = useState(0);
-    const [currentPageSize, setCurrentPageSize] = useState(10);
-    console.log(ScenarioConstant);
-    const { totalCount, nodes } = ScenarioConstant;  
-    //setTotalItems(totalCount);
-    const rows = getScenarioRowItems(nodes);
-    //const rows = getAllScenarios();
-    console.log(data);
-    return (
-        <div className="bx--grid bx--grid--full-width bx--grid--no-gutter scenario-page">
-            <div className="bx--row scenario-page__r1">
-                <div className="bx--col-lg-16">  
-                  <>
-                  <ScenarioTable
-                      headers={headers}
-                      rows={rows.slice(
-                      firstRowIndex,
-                      firstRowIndex + currentPageSize
-                      )}
-                  />
-                  <Pagination
-                    //totalItems={totalItems}
-                    totalItems={totalCount}
-                    backwardText="Previous page"
-                    forwardText="Next page"
-                    pageSize={currentPageSize}
-                    pageSizes={[5, 10, 15, 25]}
-                    itemsPerPageText="Items per page"
-                    onChange={({ page, pageSize }) => {
-                      if (pageSize !== currentPageSize) {
-                        setCurrentPageSize(pageSize);
-                      }
-                      setFirstRowIndex(pageSize * (page - 1));
-                    }}
-                  />
-                  </>
-            </div>
-        </div>
-      </div>
-    );
-};
+/* const Scenario = () => {
+  return (
+    getAllScenarios().then((data) => {
+       ScenarioList(data);
+    }));
+} */
 export default class Scenario extends Component {
   constructor() {
     super();
@@ -215,8 +176,8 @@ export default class Scenario extends Component {
   render(){
     if(this.state.data)
     return(
-      ScenarioList1(this.state.data)   
+      ScenarioList(this.state.data)   
     );
   }
-}
+} 
 //export default Scenario;
